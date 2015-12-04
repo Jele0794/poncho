@@ -1,4 +1,5 @@
 import Model.Model;
+import Model.Cliente;
 
 import java.sql.*;
 import java.io.*;
@@ -25,8 +26,19 @@ public class Ponchito {
                     model.consultaFolleto(Integer.parseInt(br.readLine()));
                 } else System.out.println("Lo sentimos! No tienes autorización");
             } else if (s.equals("b")) {
-                System.out.println("¿Cómo podemos ayudarle?");
-                System.out.println("a) ");
+                System.out.println("Bienvenido! Favor de proporcionarnos su nombre para una atención más personalizada!");
+                String nombreCliente = br.readLine();
+                Cliente cliente = new Cliente(nombreCliente);
+                System.out.println("¿Cómo podemos ayudarle Sr/Sra " + nombreCliente + "?");
+                System.out.println("a) Simulación \nb) Folleto");
+                String opcionCliente = br.readLine();
+                if (opcionCliente.equals("a")) {
+                    model.crearSimulacion();
+
+                } else if (opcionCliente.equals("b")) {
+                    System.out.println("1) Circuitos \n2) Ciudades \n3) Hoteles");
+                    model.consultaFolleto(Integer.parseInt(br.readLine()));
+                }
             }
 
 
